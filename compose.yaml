@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always  
+    volumes:
+      - "./mariadb-data/data:/var/lib/mysql/data/"
+      - "./mariadb-data/logs:/var/lib/mysql/logs/"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1 
+    depends_on:
+      - mariadb
+      

@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Express && MariaDB with template Engine PUG
+    body 
+        h1= message
+        if message == 'Users'
+            ul
+                each val, index in data
+                    li= index + ': ' + val.username + ' ' + val.lastname
+        if message == 'Books'
+            ul
+                each val, index in data
+                    li= index + ': ' + val.name
+
+    p by Danilo Marcus
